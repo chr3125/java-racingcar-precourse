@@ -10,9 +10,9 @@ public class Cars {
     public static final String CAR_DUPLICATE_EXCEPTION_MESSAGE = "자동차의 이름은 중복될 수 없습니다.";
     public static final String EMPTY_CAR_NAME_EXCEPTION_MESSAGE = "공백은 입력할 수 없습니다. 다시 입력해주세요.";
 
-    public List<Car> carList;
+    private final List<Car> carList;
+    private static int maxPosition;
 
-    public Cars() {}
 
     public Cars(List<Car> carList) {
         validationDuplicateCarNames(carList);
@@ -54,6 +54,27 @@ public class Cars {
         }
     }
 
+    public void carsRun(){
+        for(Car car : carList){
+            car.position.forwardPosition();
+        }
+    }
 
+    public int maxPosition() {
+        for(Car car : carList){
+            maxPositionCompare(car.position.position);
+        }
 
+        return maxPosition;
+    }
+
+    public void maxPositionCompare(int postion){
+        if(maxPosition < postion){
+            maxPosition = postion;
+        }
+    }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
 }
