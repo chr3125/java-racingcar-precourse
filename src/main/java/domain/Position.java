@@ -1,5 +1,7 @@
 package domain;
 
+import util.MovingCheck;
+
 public class Position {
     public int position;
     public boolean forwardBoolean;
@@ -9,6 +11,16 @@ public class Position {
         this.forwardBoolean = false;
     }
 
+
+    /**
+     * true일 경우 position을 ++ 한다
+     */
+    public void forwardPosition(){
+        if(MovingCheck.carMovingBoolean()){
+            position++;
+            forwardBoolean = true;
+        }
+    }
 
     /**
      * position value에 따라 "-" 을 표기한다.
